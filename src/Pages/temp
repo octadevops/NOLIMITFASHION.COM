@@ -1,13 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../assets/NLM LOGO.png";
 import NLM from "../assets/nolimit.jpg";
 import { Link } from "react-router-dom";
 import SLF from "../assets/SL_flag.png";
 import UAEF from "../assets/UAE_flag.png";
+import axios from "axios";
 
-export default function Index() {
+const Index = () => {
+  const [allowed, setAllowed] = useState(null); // null initially to show loading state
+
+  useEffect(() => {
+    const fetchLocation = async () => {
+      try {
+        const response = await axios.get(
+          "https://ipinfo.io?token=518c2f755dfb5a"
+        ); // Replace with your GeoIP API endpoint and token
+        const { country } = response.data;
+        if (country === "LK") {
+          // Replace 'US' with the desired country code
+          setAllowed(true);
+        } else {
+          setAllowed(false);
+        }
+      } catch (error) {
+        console.error("Error fetching location:", error);
+        setAllowed(false);
+      }
+    };
+
+    fetchLocation();
+  }, []);
+
+  if (allowed === null) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-200 text-gray-700 text-2xl">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!allowed) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-red-500 text-white text-2xl">
+        Access Denied
+      </div>
+    );
+  }
   return (
-    <div className="bg-[#33383F] w-full max-h-screen text-white flex flex-col items-center justify-center text-center font-sans">
+    <div className="bg-[#33383F] w-full max-h-screen text-white flex flex-col items-center justify-center text-center">
       <img
         src={NLM}
         alt="NLM Image"
@@ -48,4 +88,6 @@ export default function Index() {
       </div>
     </div>
   );
-}
+};
+
+export default Index;

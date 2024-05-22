@@ -97,9 +97,7 @@ const FAQs = () => {
         <div className="flex flex-col items-center justify-center ">
           <div className="felx justify-center md:w-[1024px] ">
             <div className="py-5">
-              <h2 className="text-2xl mx-auto text-white py-10">
-                Recently Ask Questions
-              </h2>
+              <h2 className="text-2xl mx-auto text-white py-10">FAQs</h2>
               {accordions.map((accordion) => (
                 <Accordion
                   key={accordion.key}

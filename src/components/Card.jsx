@@ -1,14 +1,14 @@
 import React from "react";
 import img1 from "../assets/img1.jpg";
 import img2 from "../assets/img2.jpg";
-import img3 from "../assets/img3.webp";
+import img3 from "../assets/img3.jpg";
 import img4 from "../assets/img4.jpg";
 
 const location = [
   {
     id: "1",
     image: img2,
-    strname: "NOLIMIT - AL GURAIR CENTER",
+    strname: "AL GURAIR CENTER",
     address: "Al Rigga Rd - Deira - Dubai - United Arab Emirates",
     link: "https://maps.app.goo.gl/oJroAeyw4N7zzMbE8",
   },
@@ -16,14 +16,14 @@ const location = [
   {
     id: "2",
     image: img3,
-    strname: "NOLIMIT - CITY CENTER DEIRA",
+    strname: "CITY CENTER DEIRA",
     address: "E003 - Center, Ground floor - Deira City - Dubai ",
     link: "https://maps.app.goo.gl/ejzCsb33tFu2RXft7",
   },
   {
     id: "3",
     image: img1,
-    strname: "NOLIMIT - AL WAHDA MALL",
+    strname: "AL WAHDA MALL",
     address:
       "1 Hazza ' Bin Zayed The First St - Al Nahyan - Zone 1 - Abu Dhabi - United Arab Emirates",
     link: "https://maps.app.goo.gl/dzpfjX6hdZEHfnwZ6",
@@ -31,7 +31,7 @@ const location = [
   {
     id: "4",
     image: img4,
-    strname: "NOLIMIT - CITY CENTER SHARJAH",
+    strname: "CITY CENTER SHARJAH",
     address: "Al Nahdha - Industrial Area - Sharjah - United Arab Emirates",
     link: "https://maps.app.goo.gl/tuTWiCPyNQizyuFf9",
   },

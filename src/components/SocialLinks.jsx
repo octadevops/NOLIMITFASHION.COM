@@ -5,6 +5,7 @@ import {
   FaInstagram,
   FaTiktok,
   FaSnapchat,
+  FaArrowDown,
 } from "react-icons/fa6";
 import pattern from "../assets/pattern.jpg";
 
@@ -48,8 +49,13 @@ export default function SocialLinks() {
             media channels for the latest news, exclusive content, and
             behind-the-scenes glimpses into our world.
           </p>
+          <div className="flex items-center gap-3 text-yellow-200 animate-bounce py-3 px-5 ">
+            <p className="text-xl">Click Below </p>
+            <FaArrowDown />
+          </div>
         </div>
-        <div className="flex justify-center gap-10 md:text-6xl text-3xl pt-20 z-[1500px] ">
+
+        <div className="flex justify-center gap-10 md:text-6xl text-3xl pt-10 z-[1500px] ">
           {Social.map((data, id) => (
             <a
               key={id}

@@ -1,21 +1,24 @@
-import React from "react";
 import Navbar from "../components/Navbar";
-import Main from "../assets/main.webp";
+import Footer from "../components/Footer";
+import DXB from "../assets/dubai.jpg";
 
 function About() {
   return (
     <div>
       <Navbar />
-      <div className="bg-[#33383F] w-full max-h-screen text-white flex flex-col items-center justify-center text-center">
-        <div className="relative flex flex-col items-center justify-center h-screen">
-          <div>
-            {/* <img src={Main} alt="image" /> */}
-            <div className="flex flex-col justify-center items-center gap-2 ">
-              <h2 className="font-semibold text-3xl text-[#61C3E1]">
+      <div className="bg-[#33383F] w-full flex flex-col items-center justify-center text-center ">
+        <div
+          style={{ "--image-url": `url(${DXB})` }}
+          className="bg-[image:var(--image-url)] bg-cover h-screen "
+        >
+          <div className="w-full h-full bg-gradient-to-t from-black to-transparent  flex flex-col items-center justify-center">
+            <div className="flex flex-col justify-center items-center">
+              <h1 className="font-semibold text-3xl text-[#61C3E1] ">
                 About Us
-              </h2>
+              </h1>
               <hr className="h-[2px] border-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent w-[285px]"></hr>
-              <p className="text-white py-3 px-8 md:px-52 text-center">
+
+              <p className="text-white px-8 md:px-32 text-center py-3">
                 Discover NOLIMIT, the premier fashion destination born in 1992
                 in Sri Lanka and now spanning the globe. From our humble
                 beginnings to becoming the nation's foremost fashion emporium by
@@ -38,6 +41,8 @@ function About() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

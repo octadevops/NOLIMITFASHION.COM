@@ -14,12 +14,11 @@ const Navbar = () => {
     setIsOpen(false);
   };
   const navItems = [
-    { id: 1, text: "Home", path: "/home" },
+    { id: 1, text: "Home", path: "/" },
     { id: 2, text: "About", path: "/about" },
     { id: 3, text: "Contact", path: "/contact" },
     { id: 4, text: "FAQs", path: "/faq" },
   ];
-  
 
   return (
     <nav className="bg-gray-800">
@@ -27,7 +26,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex md:justify-between md:w-full md:items-center">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/home" smooth={true} duration={500}>
+              <Link to="/" smooth={true} duration={500}>
                 <img className="h-7" src={Logo} alt="Logo" />
               </Link>
             </div>

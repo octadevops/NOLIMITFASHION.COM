@@ -1,5 +1,5 @@
 import React from "react";
-import img1 from "../assets/img1.jpg";
+import img1 from "../assets/img1.jpeg";
 import img2 from "../assets/img2.jpg";
 import img3 from "../assets/img3.jpg";
 import img4 from "../assets/img4.jpg";
@@ -46,11 +46,11 @@ export default function Card() {
         </h2>
         <hr className="h-[2px] border-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent w-[285px] mt-5" />
       </div>
-      <div className="md:flex md:gap-6 text-white md:flex-row flex flex-col items-center justify-center ">
+      <div className="md:flex md:gap-6 text-white md:flex-row flex flex-col items-center justify-center">
         {location.map((data, id) => (
           <div
             key={id}
-            className="rounded-2xl shadow-lg w-[290px] h-[500px] bg-slate-800 flex flex-col justify-between my-8"
+            className="rounded-2xl shadow-lg w-[290px] h-[500px] bg-slate-800 flex flex-col justify-between my-8 hover:-translate-y-3 duration-200"
           >
             <img
               className="w-full h-[220px] rounded-2xl shadow-xl"

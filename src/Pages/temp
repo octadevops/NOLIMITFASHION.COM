@@ -1,93 +1,64 @@
-import React, { useEffect, useState } from "react";
-import Logo from "../assets/NLM LOGO.png";
-import NLM from "../assets/nolimit.jpg";
-import { Link } from "react-router-dom";
-import SLF from "../assets/SL_flag.png";
-import UAEF from "../assets/UAE_flag.png";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import FAQs from "./Pages/FAQs";
+import Index from "./Pages/Index";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import Denied from "./assets/403-error-forbidden-animate.svg";
 
-const Index = () => {
-  const [allowed, setAllowed] = useState(null); // null initially to show loading state
+function App() {
+  const [access, setAccess] = useState(null);
 
   useEffect(() => {
-    const fetchLocation = async () => {
+    const checkLocation = async () => {
       try {
         const response = await axios.get(
-          "https://ipinfo.io?token=518c2f755dfb5a"
-        ); // Replace with your GeoIP API endpoint and token
+          "https://api.nolimitfashion.com/geolocation/"
+        );
+        console.log("API Response:", response.data);
+
         const { country } = response.data;
+        console.log("Country:", country);
+
         if (country === "LK") {
-          // Replace 'US' with the desired country code
-          setAllowed(true);
+          setAccess(true);
         } else {
-          setAllowed(false);
+          setAccess(false);
         }
       } catch (error) {
-        console.error("Error fetching location:", error);
-        setAllowed(false);
+        console.error("Error verifying location:", error);
+        setAccess(false);
       }
     };
 
-    fetchLocation();
+    checkLocation();
   }, []);
 
-  if (allowed === null) {
+  if (access === null) return <div>Loading...</div>;
+  if (access === false)
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-200 text-gray-700 text-2xl">
-        Loading...
+      <div className="w-full h-screen bg-red-800 text-white flex flex-col justify-center items-center text-center">
+        <p className="text-4xl font-bold uppercase tracking-widest">
+          Access Denied{" "}
+        </p>
+        <img src={Denied} alt="403 Forbidden" className="w-[700px]" />
+        <p className="text-2xl">Access Limited by Region </p>
       </div>
     );
-  }
 
-  if (!allowed) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-red-500 text-white text-2xl">
-        Access Denied
-      </div>
-    );
-  }
   return (
-    <div className="bg-[#33383F] w-full max-h-screen text-white flex flex-col items-center justify-center text-center">
-      <img
-        src={NLM}
-        alt="NLM Image"
-        className="bg-cover object-cover w-full h-screen absolute opacity-10"
-      />
-
-      <div className="relative flex flex-col items-center justify-center h-screen">
-        <div className="py-4 flex flex-col justify-center items-center px-4">
-          <img src={Logo} alt="Logo" className="md:w-[400px] w-[300px] pb-4" />
-          <p className="text-2xl font-semibold">
-            Welcome to Nolimit Fashion Chain
-          </p>
-          <p className="text-xl pt-10">Please select the region</p>
-        </div>
-        <div className="flex md:gap-10 gap-5 px-10">
-          <a
-            href="https://nolimit.lk"
-            className="px-6 py-2 bg-white bg-opacity-10 bg-blur-md rounded-lg text-xl text-white font-semibold hover:bg-white hover:text-white hover:bg-opacity-40 duration-300 md:w-[250px] w-[150px] "
-          >
-            <img
-              src={SLF}
-              alt="SL Flag"
-              className="w-[200px] hover:animate-pulse duration-300"
-            />
-            Sri Lanka
-          </a>
-          <Link to={"/home"}>
-            <p className="px-6 py-2 bg-white bg-opacity-10 bg-blur-md rounded-lg text-xl text-white font-semibold hover:bg-white hover:text-white hover:bg-opacity-40 duration-300 md:w-[250px] w-[150px] ">
-              <img
-                src={UAEF}
-                alt="UAE Flag"
-                className="w-[200px] hover:animate-pulse duration-300"
-              />
-              UAE
-            </p>
-          </Link>
-        </div>
-      </div>
-    </div>
+    <>
+      <Routes>
+        {/* <Route path="/" element={<Index />} /> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/faq" element={<FAQs />} />
+      </Routes>
+    </>
   );
-};
+}
 
-export default Index;
+export default App;
